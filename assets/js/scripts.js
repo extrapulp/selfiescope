@@ -1,16 +1,36 @@
 var camimage;
 var images = [
-  "http://media-cache-ak0.pinimg.com/736x/5d/d8/41/5dd8416cbae27edeac61aa525a5df99d.jpg",
+  "assets/img/jake.jpg",
 ];
 
+var delay = ( function() {
+    var timer = 0;
+    return function(callback, ms) {
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+    };
+})();
+
 function take_snapshot() {
-  // take snapshot and get image data
+  // turn on camera flash
+  $('body').addClass('flash-on');
   Webcam.snap( function(data_uri) {
     // assign webcam snap to camimage
     var camimage = data_uri;
+    // add image to images array
     images.unshift(camimage);
+    // turn off camera flash
+    delay(function(){
+    $('body').removeClass('flash-on');
+  }, 200 ); // end delay
   } );
 }
+
+$(window).keypress(function(e) {
+    if (e.which === 32) {
+      take_snapshot();
+    }
+});
 
 // Let's create graphemescope object inside the container
 var container = $("#container");
@@ -19,10 +39,10 @@ var scope = new Graphemescope( container[0] );
 var index = 0;
 function changePicture() {
     scope.setImage(images[index]);
-    index = (index + 1) % images.length;
+    index = (index) % images.length;
 };
 
-setInterval(changePicture, 5000);
+setInterval(changePicture, 1);
 changePicture();
 
 $(window).mousemove(function(event) {
@@ -33,7 +53,6 @@ $(window).mousemove(function(event) {
   scope.angleTarget = factorx;
   scope.zoomTarget  = 1.0 + 0.5 * factory;
 });
-
 
 var resizeHandler = function() {
   container.height( $(window).height() );

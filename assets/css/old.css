@@ -12,19 +12,6 @@ body {
   position: relative;
 }
 
-.camera_flash{
-  position:absolute;
-  height:100%;
-  width:100%;
-  background:#fff;
-  opacity:0;
-  transition: all 0.2s ease-in-out;
-}
-
-.flash-on .camera_flash {
-  opacity: 1;
-}
-
 .overlay {
   background-color: black;
   opacity : 0.9;
@@ -73,5 +60,4 @@ body {
 
 #my_camera video {
   border-radius: 10px;
-  border:5px solid #fff;
 }

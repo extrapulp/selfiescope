@@ -1,0 +1,24 @@
+{
+  "name": "selfiescope",
+  "version": "1.0.0",
+  "description": "scope your face",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/extrapulp/selfiescope.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/extrapulp/selfiescope/issues"
+  },
+  "homepage": "https://github.com/extrapulp/selfiescope",
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2"
+  }
+}
