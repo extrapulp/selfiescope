@@ -59,6 +59,12 @@ $(window).keypress(function(e) {
     }
 });
 
+$(window).keypress(function(e) {
+    if (e.which === 53) {
+      saveSnap();
+    }
+});
+
   $("#fieldNext").click(function() {
       if($('#videoSource option:selected').next().length>0)
       $('#videoSource option:selected').next().attr('selected', 'selected').trigger('change');
