@@ -15,6 +15,7 @@
  <body>
 	 <div class="camera_flash"></div>
    <div id="container">
+		 <div id="img-results"></div>
    </div>
    <div class="camera-wrap">
      <div class="camera">
@@ -36,12 +37,26 @@
 
        <!-- A button for taking snaps -->
        <form>
+				 <div class="select hidden">
+        <label for="audioSource">Audio input source: </label><select id="audioSource"></select>
+    </div>
+
+    <div class="select hidden">
+        <label for="audioOutput">Audio output destination: </label><select id="audioOutput"></select>
+    </div>
+
+    <div class="select">
+        <label for="videoSource">Video source: </label><select id="videoSource"></select>
+    </div>
+				  <input type=button value="Save Snapshot" onClick="saveSnap()">
          <input type=button value="Take Snapshot" onClick="take_snapshot()">
        </form>
      </div>
    </div>
 
    <script src = "assets/js/graphemescope.min.js"></script>
+	 <script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
+	 <script src = "assets/js/camerasource.js"></script>
    <script src = "assets/js/scripts.js"></script>
 
   </body>

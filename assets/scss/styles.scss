@@ -38,6 +38,10 @@ body {
   text-align: center;
 }
 
+#captured-image {
+  display:none;
+}
+
 .camera form input[type=button] {
     outline: none;
     border: none;

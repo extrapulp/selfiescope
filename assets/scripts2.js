@@ -1,6 +1,6 @@
 var camimage;
 var images = [
-  "assets/img/face4.jpg",
+  "assets/img/face.jpg",
 ];
 
 var delay = ( function() {
@@ -11,39 +11,26 @@ var delay = ( function() {
     };
 })();
 
-function take_snapshot() {
-  // turn on camera flash
-  $('body').addClass('flash-on');
-  Webcam.snap( function(data_uri) {
-    // assign webcam snap to camimage
-    var camimage = data_uri;
-    // add image to images array
-    document.getElementById('img-results').innerHTML =
-    '<img id="captured-image" src="'+camimage+'"/>';
-    images.unshift(camimage);
-    // turn off camera flash
-    delay(function(){
-    $('body').removeClass('flash-on');
-  }, 200 ); // end delay
-  } );
-}
 
-
-function saveSnap(){
- // Get base64 value from <img id='captured-image'> source
- var base64image = document.getElementById("captured-image").src;
-
- Webcam.upload( base64image, '/upload.php', function(code, text) {
-  console.log('Save successfully');
-  //console.log(text);
- });
-}
-
-$(window).keypress(function(e) {
-    if (e.which === 32) {
-      take_snapshot();
-    }
+Webcam.set({
+ width: 320,
+ height: 240,
+ image_format: 'jpeg',
+ jpeg_quality: 90
 });
+Webcam.attach( '#my_camera' );
+
+<!-- Code to handle taking the snapshot and displaying it locally -->
+function take_snapshot() {
+
+// take snapshot and get image data
+Webcam.snap( function(data_uri) {
+ // display results in page
+ document.getElementById('results').innerHTML =
+ '<img src="'+data_uri+'"/>';
+ } );
+}
+
 
 // Let's create graphemescope object inside the container
 var container = $("#container");

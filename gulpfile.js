@@ -17,7 +17,18 @@ gulp.task('serve', function () {
     }
   });
 
+  gulp.watch('./assets/scss/*scss', ['styles']).on('change', browserSync.reload);
+  gulp.watch('./**/*.html').on('change', browserSync.reload);
+
+});
+
+gulp.task('proxy', function () {
+  browserSync.init({
+    proxy: "localhost:8888"
+  });
+
   gulp.watch('./assets/scss/*scss', ['styles']);
+  gulp.watch('./**/*.php').on('change', browserSync.reload);
   gulp.watch('./**/*.html').on('change', browserSync.reload);
 
 });
