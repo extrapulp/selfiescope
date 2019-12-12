@@ -39,6 +39,9 @@ body {
 #captured-image {
   display: none; }
 
+.hidden {
+  display: none; }
+
 .camera form input[type=button] {
   outline: none;
   border: none;
@@ -57,7 +60,3 @@ body {
 
 #my_camera video {
   border-radius: 10px; }
-
-  .hidden {
-    display:none;
-  }

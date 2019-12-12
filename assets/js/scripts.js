@@ -1,3 +1,18 @@
+// Prints media devices to console.
+navigator.mediaDevices.enumerateDevices()
+.then(function(devices) {
+  devices.forEach(function(device) {
+    console.log(device.kind + ": " + device.label +
+                " id = " + device.deviceId);
+  });
+})
+
+
+.catch(function(err) {
+  console.log(err.name + ": " + err.message);
+});
+
+var deviceID = MediaDeviceInfo.deviceId
 var camimage;
 var images = [
   "assets/img/face4.jpg",
@@ -29,21 +44,37 @@ function take_snapshot() {
 }
 
 
+
 function saveSnap(){
  // Get base64 value from <img id='captured-image'> source
  var base64image = document.getElementById("captured-image").src;
-
- Webcam.upload( base64image, '/upload.php', function(code, text) {
-  console.log('Save successfully');
-  //console.log(text);
- });
-}
-
+   Webcam.upload( base64image, '/upload.php', function(code, text) {
+    console.log('Save successfully');
+    //console.log(text);
+   });
+  }
 $(window).keypress(function(e) {
     if (e.which === 32) {
       take_snapshot();
     }
 });
+
+  $("#fieldNext").click(function() {
+      if($('#videoSource option:selected').next().length>0)
+      $('#videoSource option:selected').next().attr('selected', 'selected').trigger('change');
+      else $('#videoSource option').first().attr('selected', 'selected').trigger('change');
+  });
+
+  $(window).keypress(function(e) {
+      if (e.which === 51) {
+        if($('#videoSource option:selected').next().length>0)
+        $('#videoSource option:selected').next().attr('selected', 'selected').trigger('change');
+        else $('#videoSource option').first().attr('selected', 'selected').trigger('change');
+      }
+  });
+
+
+
 
 // Let's create graphemescope object inside the container
 var container = $("#container");

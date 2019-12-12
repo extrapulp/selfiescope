@@ -15,7 +15,9 @@
  <body>
 	 <div class="camera_flash"></div>
    <div id="container">
-		 <div id="img-results"></div>
+		 <div id="img-results">
+			 <img id="captured-image" />
+		 </div>
    </div>
    <div class="camera-wrap">
      <div class="camera">
@@ -27,8 +29,8 @@
        <!-- Configure a few settings and attach camera -->
        <script language="JavaScript">
          Webcam.set({
-           width: 640,
-           height: 480,
+           width: 1080,
+           height: 720,
            image_format: 'jpeg',
            jpeg_quality: 100
          });
@@ -46,6 +48,7 @@
     </div>
 
     <div class="select">
+			<input type="button" id="fieldNext" value="Next">
         <label for="videoSource">Video source: </label><select id="videoSource"></select>
     </div>
 				  <input type=button value="Save Snapshot" onClick="saveSnap()">
